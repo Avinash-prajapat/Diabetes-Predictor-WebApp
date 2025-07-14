@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="split-container">
+
+        <!-- Left: Input Form -->
+        <div class="form-side">
+            <h2>🩺 Diabetes Prediction</h2>
+            <form method="POST" action="/predict">
+                <div class="input-group">
+                    <label>Pregnancies</label>
+                    <input type="number" name="Pregnancies" placeholder="e.g. 0 - 15" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Glucose</label>
+                    <input type="number" name="Glucose" placeholder="e.g. 70 - 200" required>
+                </div>
+
+                <div class="input-group">
+                    <label>BloodPressure</label>
+                    <input type="number" name="BloodPressure" placeholder="e.g. 40 - 120" required>
+                </div>
+
+                <div class="input-group">
+                    <label>SkinThickness</label>
+                    <input type="number" name="SkinThickness" placeholder="e.g. 10 - 99" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Insulin</label>
+                    <input type="number" name="Insulin" placeholder="e.g. 15 - 276" required>
+                </div>
+
+                <div class="input-group">
+                    <label>BMI</label>
+                    <input type="number" step="any" name="BMI" placeholder="e.g. 15.0 - 50.0" required>
+                </div>
+
+                <div class="input-group">
+                    <label>DiabetesPedigreeFunction</label>
+                    <input type="number" step="any" name="DiabetesPedigreeFunction" placeholder="e.g. 0.0 - 2.5" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Age</label>
+                    <input type="number" name="Age" placeholder="e.g. 18 - 100" required>
+                </div>
+
+                <button type="submit">🔍 Click here Predict</button>
+            </form>
+
+        </div>
+
+        <!-- Right: Emotional Animated Output -->
+<div class="animation-side">
+
+    {% if result %}
+        {% if 'Not' in result %}
+            <div class="animated-result happy">
+                <div class="emoji">😄</div>
+                <p>{{ result }}</p>
+            </div>
+        {% else %}
+            <div class="animated-result danger">
+                <div class="emoji">⚠️</div>
+                <p>{{ result }}</p>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="hint">
+            <p>Prediction will appear here 🤖</p>
+        </div>
+    {% endif %}
+
+    <!-- ✅ Note is always at the bottom -->
+    <div class="note-wrapper">
+        <p class="note-message">
+            ⚠️ Note: This prediction is based on a machine learning model and is <b>not a substitute for professional medical advice</b>.  
+        Please consult a licensed doctor for an accurate diagnosis and treatment.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
