@@ -66,7 +66,7 @@ def predict_web():
 @app.route('/api/predict', methods=['POST'])
 def predict_api():
     try:
-        data = request.json  # Android se JSON milega
+        data = request.get_json(force=True)  # 🔥 force=True => JSON parse kar lega
         features = [
             data['Pregnancies'], data['Glucose'], data['BloodPressure'],
             data['SkinThickness'], data['Insulin'], data['BMI'],
@@ -77,4 +77,5 @@ def predict_api():
         return jsonify({"prediction": int(prediction), "result": result})
     except Exception as e:
         return jsonify({"error": str(e)})
+
 
