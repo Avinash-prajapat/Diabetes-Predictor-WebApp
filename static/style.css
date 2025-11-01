@@ -1,12 +1,13 @@
 body {
-    margin: 10;
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #eef4ff;
 }
 
 .split-container {
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* LEFT SIDE */
@@ -14,36 +15,37 @@ body {
     flex: 1;
     padding: 20px;
     background: white;
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
     color: #0d6efd;
     text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .input-group {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 label {
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     display: block;
 }
 
 input[type="number"] {
-    width: 95%;
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     border-radius: 8px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 button {
-    width: 97%;
-    padding: 12px;
+    width: 100%;
+    padding: 14px;
     background-color: #198754;
     color: white;
     border: none;
@@ -65,10 +67,13 @@ button:hover {
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 20px;
+    min-height: 300px;
 }
 
 .animated-result {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 250px;
     border-radius: 20px;
     padding: 20px;
@@ -78,10 +83,11 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .animated-result p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-top: 15px;
 }
@@ -106,8 +112,9 @@ button:hover {
 }
 
 .hint {
-    font-size: 18px;
+    font-size: 16px;
     color: #888;
+    text-align: center;
 }
 
 /* Animations */
@@ -131,6 +138,7 @@ button:hover {
     0% { transform: scale(1); }
     100% { transform: scale(1.1); }
 }
+
 .note-wrapper {
     position: absolute;
     bottom: 20px;
@@ -151,3 +159,40 @@ button:hover {
     font-style: italic;
 }
 
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+    .split-container {
+        flex-direction: row;
+    }
+    
+    .form-side {
+        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .input-group {
+        margin-bottom: 20px;
+    }
+    
+    input[type="number"] {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    button {
+        width: 97%;
+        padding: 12px;
+    }
+    
+    .animated-result p {
+        font-size: 20px;
+    }
+    
+    .hint {
+        font-size: 18px;
+    }
+}
