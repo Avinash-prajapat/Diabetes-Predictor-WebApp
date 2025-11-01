@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #eef4ff;
+    overflow-x: hidden;
 }
 
 .split-container {
@@ -10,19 +11,19 @@ body {
     min-height: 100vh;
 }
 
-/* LEFT SIDE */
+/* LEFT SIDE - FORM */
 .form-side {
-    flex: 1;
     padding: 20px;
     background: white;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
     color: #0d6efd;
     text-align: center;
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding-top: 10px;
 }
 
 .input-group {
@@ -30,51 +31,65 @@ h2 {
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-weight: 600;
+    margin-bottom: 6px;
     display: block;
+    color: #333;
 }
 
 input[type="number"] {
     width: 100%;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 10px;
     border: 1px solid #ccc;
+    font-size: 16px; /* Prevents zoom on iOS */
     box-sizing: border-box;
+    background: #f9f9f9;
+}
+
+input[type="number"]:focus {
+    border-color: #0d6efd;
+    outline: none;
+    background: white;
 }
 
 button {
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     background-color: #198754;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 18px;
     margin-top: 20px;
     cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(25, 135, 84, 0.2);
+    transition: all 0.3s ease;
 }
 
-button:hover {
+button:active {
     background-color: #146c43;
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(25, 135, 84, 0.2);
 }
 
-/* RIGHT SIDE */
+/* RIGHT SIDE - RESULTS */
 .animation-side {
-    flex: 1;
     background: #f7fbff;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 20px;
-    min-height: 300px;
+    padding: 30px 20px;
+    min-height: 40vh;
+    flex: 1;
 }
 
 .animated-result {
     width: 100%;
-    max-width: 300px;
-    height: 250px;
+    max-width: 320px;
+    height: 220px;
     border-radius: 20px;
     padding: 20px;
     text-align: center;
@@ -87,7 +102,7 @@ button:hover {
 }
 
 .animated-result p {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     margin-top: 15px;
 }
@@ -112,9 +127,34 @@ button:hover {
 }
 
 .hint {
-    font-size: 16px;
-    color: #888;
+    font-size: 18px;
+    color: #666;
     text-align: center;
+    padding: 20px;
+}
+
+/* NOTE SECTION */
+.note-wrapper {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.note-message {
+    font-size: 12px;
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 12px;
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    font-style: italic;
+    line-height: 1.4;
 }
 
 /* Animations */
@@ -125,7 +165,7 @@ button:hover {
 
 @keyframes bounce {
     0% { transform: translateY(0px); }
-    100% { transform: translateY(-10px); }
+    100% { transform: translateY(-8px); }
 }
 
 @keyframes shake {
@@ -139,43 +179,29 @@ button:hover {
     100% { transform: scale(1.1); }
 }
 
-.note-wrapper {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.note-message {
-    font-size: 13px;
-    color: #856404;
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-    padding: 10px;
-    width: 90%;
-    text-align: center;
-    border-radius: 8px;
-    font-style: italic;
-}
-
-/* Media Queries for Responsive Design */
+/* Tablet and Desktop Layout */
 @media (min-width: 768px) {
     .split-container {
         flex-direction: row;
+        height: 100vh;
     }
     
     .form-side {
+        flex: 1;
+        padding: 30px;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.05);
+        overflow-y: auto;
+    }
+    
+    .animation-side {
+        flex: 1;
+        min-height: auto;
+        padding: 20px;
     }
     
     h2 {
         font-size: 28px;
         margin-bottom: 30px;
-    }
-    
-    .input-group {
-        margin-bottom: 20px;
     }
     
     input[type="number"] {
@@ -186,13 +212,15 @@ button:hover {
     button {
         width: 97%;
         padding: 12px;
+        font-size: 16px;
     }
     
-    .animated-result p {
-        font-size: 20px;
+    button:hover {
+        background-color: #146c43;
     }
     
-    .hint {
-        font-size: 18px;
+    .note-message {
+        font-size: 13px;
+        width: 90%;
     }
 }
