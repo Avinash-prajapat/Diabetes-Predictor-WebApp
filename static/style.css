@@ -1,8 +1,7 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef4ff;
     overflow-x: hidden;
 }
 
@@ -12,299 +11,232 @@ body {
     min-height: 100vh;
 }
 
-/* HEADER SECTION */
+/* FORM SECTION - Top */
 .form-side {
-    padding: 25px 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 0 0 25px 25px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    overflow-y: auto;
 }
 
 h2 {
-    color: #2c3e50;
+    color: #0d6efd;
     text-align: center;
     font-size: 24px;
     margin-bottom: 25px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    padding-top: 10px;
 }
 
-h2::before {
-    content: "🩺";
-    font-size: 28px;
-}
-
-/* FORM STYLES */
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 label {
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     display: block;
-    color: #2c3e50;
-    font-size: 14px;
+    color: #333;
 }
 
 input[type="number"] {
     width: 100%;
-    padding: 16px;
-    border-radius: 12px;
-    border: 2px solid #e1e8ed;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
     font-size: 16px;
     box-sizing: border-box;
-    background: #f8f9fa;
-    transition: all 0.3s ease;
+    background: #f9f9f9;
 }
 
 input[type="number"]:focus {
-    border-color: #3498db;
+    border-color: #0d6efd;
     outline: none;
     background: white;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-/* PREDICT BUTTON */
 button {
     width: 100%;
-    padding: 18px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    padding: 16px;
+    background-color: #198754;
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 18px;
-    font-weight: 600;
-    margin-top: 25px;
+    margin-top: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(25, 135, 84, 0.2);
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-button::before {
-    content: "🔍";
-    font-size: 20px;
 }
 
 button:active {
+    background-color: #146c43;
     transform: translateY(2px);
-    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 2px 4px rgba(25, 135, 84, 0.2);
 }
 
-/* RESULTS SECTION */
+/* OUTPUT SECTION - Middle */
 .animation-side {
-    flex: 1;
-    padding: 30px 20px;
+    background: #f7fbff;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    min-height: 60vh;
+    justify-content: center;
+    padding: 30px 20px;
+    min-height: 250px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .animated-result {
     width: 100%;
-    max-width: 340px;
-    height: 240px;
+    max-width: 320px;
+    height: 200px;
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     text-align: center;
-    animation: fadeInUp 0.8s ease forwards;
+    animation: fadeIn 1s ease forwards;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    box-sizing: border-box;
 }
 
 .animated-result p {
-    font-size: 22px;
-    font-weight: 700;
-    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 .happy {
-    background: linear-gradient(135deg, #00b09b, #96c93d);
-    border: none;
-    color: white;
-    animation: float 3s ease-in-out infinite;
+    background: #e0ffe5;
+    border: 2px solid #28a745;
+    color: #28a745;
+    animation: bounce 1s ease infinite alternate;
 }
 
 .danger {
-    background: linear-gradient(135deg, #ff416c, #ff4b2b);
-    border: none;
-    color: white;
-    animation: pulse 2s ease-in-out infinite;
+    background: #ffe0e0;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    animation: shake 0.8s ease infinite;
 }
 
 .emoji {
-    font-size: 70px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    font-size: 60px;
+    animation: scaleUp 0.8s ease-in-out infinite alternate;
 }
 
 .hint {
     font-size: 18px;
-    color: white;
+    color: #666;
     text-align: center;
-    padding: 40px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 340px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-/* NOTE SECTION */
+/* NOTE SECTION - Bottom */
 .note-wrapper {
+    background: #fff3cd;
+    border-top: 1px solid #ffeeba;
+    padding: 15px 20px;
     width: 100%;
-    padding: 20px;
-    margin-top: auto;
+    box-sizing: border-box;
 }
 
 .note-message {
-    font-size: 13px;
-    color: white;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    font-size: 12px;
+    color: #856404;
     text-align: center;
-    border-radius: 16px;
-    line-height: 1.5;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0;
 }
 
-.note-message b {
-    color: #ffeaa7;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* MODERN ANIMATIONS */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes bounce {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+@keyframes shake {
+    0% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.02);
-    }
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(52, 152, 219, 0.6);
-    }
-}
-
-/* SCROLL BEHAVIOR */
-.split-container {
-    scroll-behavior: smooth;
+@keyframes scaleUp {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
 }
 
 /* Tablet and Desktop Layout */
 @media (min-width: 768px) {
-    body {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    
     .split-container {
         flex-direction: row;
-        max-width: 1200px;
-        width: 95%;
-        height: 90vh;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border-radius: 25px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
+        height: 100vh;
     }
     
     .form-side {
         flex: 1;
-        border-radius: 25px 0 0 25px;
-        margin: 20px 0 20px 20px;
-        padding: 40px;
+        padding: 30px;
+        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.05);
+        overflow-y: auto;
     }
     
     .animation-side {
         flex: 1;
-        padding: 40px;
-        margin: 20px 20px 20px 0;
-        border-radius: 0 25px 25px 0;
+        min-height: auto;
+        padding: 20px;
+        border: none;
+        position: relative;
     }
     
-    h2 {
-        font-size: 32px;
-    }
-    
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-    }
-    
-    .animated-result {
-        max-width: 400px;
-        height: 280px;
+    .note-wrapper {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        background: transparent;
+        border: none;
+        padding: 0 20px;
     }
     
     .note-message {
-        font-size: 14px;
-    }
-}
-
-/* Extra small devices */
-@media (max-width: 360px) {
-    .form-side {
-        padding: 20px 15px;
-    }
-    
-    .animation-side {
-        padding: 20px 15px;
+        background-color: #fff3cd;
+        border: 1px solid #ffeeba;
+        padding: 10px;
+        width: 90%;
+        margin: 0 auto;
     }
     
     h2 {
-        font-size: 22px;
+        font-size: 28px;
+        margin-bottom: 30px;
     }
     
-    .animated-result {
-        height: 200px;
+    input[type="number"] {
+        width: 95%;
+        padding: 10px;
     }
     
-    .emoji {
-        font-size: 60px;
+    button {
+        width: 97%;
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background-color: #146c43;
+    }
+    
+    .note-message {
+        font-size: 13px;
     }
 }
